@@ -7,3 +7,11 @@ editor: visual
 ```{r}
 library(lterdatasampler)
 ```
+
+```{r}
+ggplot(
+  pie_crab, aes(x = size, y = latitude) )+
+    geom_jitter()
+```
+
+THIS IS MY OWN BRANCH I FIGURED IT OUT
