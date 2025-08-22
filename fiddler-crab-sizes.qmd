@@ -1,5 +1,7 @@
 ---
 title: "fiddler-crab-sizes"
+execute: 
+  echo: false
 format: html
 editor: visual
 ---
@@ -7,17 +9,31 @@ editor: visual
 ```{r}
 library(lterdatasampler)
 library(tidyverse)
-
+library(kableExtra)
 pie_crab
 ```
 
 ```{r}
+#| fig-cap: "LTER Fiddler Crabs"
 ggplot(
   pie_crab, aes(x = size, y = latitude) )+
-    geom_jitter()
+    geom_jitter() +
+  labs(
+    title = "Fiddler Crabs Size and Latitude")
 
 ```
 
-
 These are the actual changes those other changes were a joke
 
+```{r}
+pie_crab_subset <- pie_crab %>% 
+  group_by(site) %>% 
+  mutate(mean_size = round(mean(size), 2),
+         size_sd = sd(size),
+         sample_size = n()) %>% 
+  select(mean_size, size_sd, sample_size)
+
+pie_crab_subset %>%
+  kable(col.names = c("Site", "Mean", "Std. Deviation", "Sample Size")) %>%
+  kable_classic()
+```
