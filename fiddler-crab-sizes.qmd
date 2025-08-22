@@ -6,12 +6,15 @@ editor: visual
 
 ```{r}
 library(lterdatasampler)
+library(tidyverse)
+
+pie_crab
 ```
 
 ```{r}
 ggplot(
   pie_crab, aes(x = size, y = latitude) )+
     geom_jitter()
+
 ```
 
-THIS IS MY OWN BRANCH I FIGURED IT OUT 2
